@@ -3,19 +3,21 @@ package com.demo.appcenttodolist.entities;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
-public class Task {
-
+public class TodoList {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    private String text;
-    private String state;
+    private String name;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "todolist_id")
-    private TodoList todoList;
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "todoList")
+    private List<Task> tasks;
 }
