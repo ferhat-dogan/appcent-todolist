@@ -30,7 +30,7 @@ public class AppcentTodolistApplication {
 
     @Bean
     CommandLineRunner runner(){
-        User userDemo = new User("Ferhat Doğan", "ferhat.fda8@gmail.com", "123456");
+        User userDemo = new User("Ferhat Doğan", "ferhat.fda8@gmail.com", "$2a$10$zstxwjy/tIMkPDW0AG1ANe3UeXCpuORyXaVWIb2VyPs/74Pdhv0mC");
         TodoList todoListDemo = new TodoList("List 1", userDemo);
 
         return args -> {
