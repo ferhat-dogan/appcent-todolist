@@ -26,14 +26,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure (HttpSecurity http) throws Exception{
-        http.csrf().disable().cors().and().authorizeRequests()
+
+        // Security is off
+        http.csrf().disable().cors().and().authorizeRequests().anyRequest().permitAll();
+
+        // Security is on
+        /*http.csrf().disable().cors().and().authorizeRequests()
                 .antMatchers(HttpMethod.POST, "/login").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 // Filter for the login requests
                 .addFilterBefore(new LoginFilter("/login", authenticationManager()), UsernamePasswordAuthenticationFilter.class)
                 // Filter for other requests to check JWT
-                .addFilterBefore(new AuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
+                .addFilterBefore(new AuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);*/
     }
 
     // This is needed for frontend, that is sending requests from the other origin.
